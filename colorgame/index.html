@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src ="game.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div style="display:flex">
+        <div id="Resultaat1"><b>Settings<br></b>
+            <table class="table2">
+                <tr>
+                    <td>
+                        Aantal loops
+                    </td>
+                    <td>
+                        <input type="number" id="nrOfLoops" value="6">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Aantal kleuren
+                    </td>
+                    <td>
+                        <input type="number" id="aColors" value="9">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Aantal seconden per loop
+                    </td>
+                    <td>
+                        <input type="number" id="msecInterval" value="2">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        KLEUR wel/niet veranderen
+                    </td>
+                    <td>
+                        <input type="checkbox" id="changeColor">
+                    </td>
+                </tr>
+            </table>
+        </div>
+            <div id="divgame">
+                <div id="searchColor"> 
+                    <div id="KLEUR"> KLEUR </div>
+                    <div id="hoi">
+                        <div id="row1">
+                            <div class="gameBlok" onclick="test(this)"></div>
+                            <div class="gameBlok" onclick="test(this)"></div>
+                            <div class="gameBlok" onclick="test(this)"></div>
+                        </div>
+                        <div id="row2">
+                            <div class="gameBlok" onclick="test(this)"></div>
+                            <div class="gameBlok" onclick="test(this)"></div>
+                            <div class="gameBlok" onclick="test(this)"></div>
+                        </div>
+                        <div id="row3">
+                            <div class="gameBlok" onclick="test(this)"></div>
+                            <div class="gameBlok" onclick="test(this)"></div>
+                            <div class="gameBlok" onclick="test(this)"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <table id="startstoptable">
+                                <td>
+                            <input type="submit" value=" START " id="start" onclick="startThegame()"><br>
+                                
+                            <input type="submit" value=" STOP " id="stop" onclick="stopThegame()"><br>
+                                
+                            <form><input type="submit" value=" RELOAD " id="reload"></form>
+                            </td>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        <div id="Result">
+            <div>
+                <b>Resultaat</b>
+                <div id="score1"></div>
+                <div id="score2"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
