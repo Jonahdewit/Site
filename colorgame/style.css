@@ -1,0 +1,121 @@
+.gameBlok{
+    /* individele div */
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    flex: 1;
+    float: left;
+    /* border-color:pink;
+    border-spacing: 5px; */
+}
+
+.divgame{
+    /* Hele game */
+    display: flex;
+    flex: 1;
+    /* flex-wrap: nowrap; */
+    margin-left: 100px;
+    margin-right: 100px;
+}
+      
+.divgame > div {
+    background-color:   white;
+    width:              100px;
+    margin:             10px;
+    text-align:         center;
+    line-height:        75px;
+    font-size:          30px; 
+}
+
+.row1{
+    display:            flex;
+    flex:               3;
+}
+
+.row2{
+    display:            flex;
+    flex:               3;
+}
+
+.row3{
+    display:            flex;
+    flex:               3;
+}
+
+#searchColor{
+    width:              217px;
+    text-align:         center;
+    border:             solid black 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+
+}
+
+#hoi
+{
+    margin-right: 1px;
+}
+
+td{
+    border:             solid black 1px;
+    text-align:         center;
+    display:            flex;
+}
+
+#flex{
+    display:            flex;
+}
+
+#Result{
+    border:             solid black 2px;
+    width:              214px;
+    background-color:   lightgrey;
+}
+
+#Resultaat1{
+    border:             solid black 2px;
+    flex:1;
+    background-color:   lightgrey;
+}
+
+#startstoptable{
+    text-align: center;
+    width: 100px;
+    display: flex;
+}
+
+#KLEUR
+{
+    border-bottom: solid  black 1px;
+    border-left: solid  black 1px;
+    border-right: solid  black 1px;
+}
+
+/* #Resultaat2{
+    border:solid black  4px;
+    margin-top:         0px;
+    margin-bottom:      0px;
+    margin-right:       0px;
+    margin-left:        10px;
+    border-radius:      5%;
+    width:              214px;
+    background-color:   lightgrey;
+} */
+
+/* .colorDivs{
+    display:            flex;
+    flex-wrap:          wrap;
+    width:              160px;
+    border:             1px dashed red;
+} */
+
+/* .colorDivs > div{
+    background-color:   blue;
+    margin:             1px;
+    height:             50px;
+    line-height:        50px;
+    width:              50px;
+    color:              white;
+    text-align:         center;
+} */
