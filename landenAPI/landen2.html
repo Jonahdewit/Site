@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body
+    {
+        font-family: verdana;
+        font-size: 12px;
+    }
+
+    #landdiv
+    {
+        border: 3px solid black;
+        padding: 10px;
+        max-height: 200px;
+        /* width: 400px; */
+        overflow: auto;
+        display: flex;
+    }
+
+    #flex
+    {
+        border: 1px solid purple;
+        padding: 10px;
+        max-height: 200px;
+        width: 400px;
+        overflow: auto;
+        display: flex;
+        margin-left: 10px;
+    }
+
+    #maindiv
+    {
+        display: flex;
+        border: 1px dashed red;
+        padding: 5px;
+    }
+    #hoi
+    {
+        width: 250px;
+    }
+
+    /* .tb1, td, tr
+    {
+        border:1px black solid;
+    )*/
+    
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+    // Get the entire dropdown via ID
+    let selectionDropdown = document.getElementById("hoi");
+    // Now get its options
+    let selectionOptions = selectionDropdown.getElementsByTagName("hoi");
+    // Disable the first one. Make sure that you set the first one as the "read-only" option in the 
+    // Webflow-UI
+    selectionOptions[0].disabled = true;
+</script>
+</head>
+<body>
+    <select onchange="fChangeSet(this)">
+        <option value="l1" id="l1">land 1</option>
+        <option value="l2" id="l2">land 2</option>
+        <option value="l3" id="l3">land 3</option>
+    </select>
+    <div id="maindiv">
+        <div id="landdiv"></div>
+        <div id="flex"></div>
+
+
+    </div>
+
+    <script type="text/javascript">
+        let allelanden;
+
+        $.getJSON("https://restcountries.com/v3.1/all", function (landen) 
+        {
+            console.log("landen:", landen);
+
+            allelanden = landen;
+            
+            let landenHTML = "<table class='tb1'>";
+
+            landen.forEach(function (objLand, index) 
+            {
+                let selectBorders = "-";
+                let LengthBorders = 0;
+                if(objLand.borders)
+                {
+                    LengthBorders = objLand.borders.length;
+                    selectBorders = "<select onchange='ftest1(this)'>";
+                    let brds=objLand.borders;
+                    selectBorders += "<option id='hoi'>Kies land</option>";
+
+                    brds.forEach(function (border, index2)
+                    {
+                        selectBorders += "<option>"+border+"</option>";
+                    });
+                    selectBorders += "</select>";
+                }
+
+                landenHTML += "<tr>";
+                    landenHTML += "<td>" + objLand.name.common  + "</td>";
+                    landenHTML += "<td>" + objLand.capital      + "</td>";
+                    landenHTML += "<td>" + LengthBorders        + "</td>";
+                    landenHTML += "<td>" + selectBorders        + "</td>";
+                landenHTML += "</tr>";
+            });
+            landenHTML += "</table>";
+
+            document.getElementById("landdiv").innerHTML = landenHTML;
+        });
+
+        function ftest1(selectbox)
+        {
+            
+            let setland = selectbox.value;
+
+            if(setland.value = "Kies land")
+            {
+                document.getElementById("hoi").disable = true;
+
+            }
+        
+            // if(setland != "Kies land")
+            // {
+            //     document.getElementById("hoi").disable = true;
+            //     console.log("hoihoihoi");
+            // }
+
+            let inhoudvanlanden = "";
+
+            allelanden.forEach(function (objLand, index) 
+            {
+                if(objLand.cca3 == setland)
+                {
+                    console.log(objLand);
+
+                    inhoudvanlanden = "Naam: " + objLand.name.common + "<br>";
+                    inhoudvanlanden += "hoofdstad: " + objLand.capital + "<br>";
+                    inhoudvanlanden += "inwoners: " + objLand.population + "<br>";
+                }
+                document.getElementById("flex").innerHTML = inhoudvanlanden;
+            });
+        }
+
+        function fChangeSet(selectBox)  
+        {
+            let afkortingSetLand = selectBox.value;
+            console.log("geselecteerde waarde = "+ afkortingSetLand);
+
+            let htmlSetland = "afkorting = " + afkortingSetLand + "<br>";
+
+            allelanden.forEach(function (land)
+            {
+                console.log("land.ccs3 = " + land.cca3);
+                if(land.cca3 == afkortingSetLand)
+                {
+                    htmlSetland += "naam = " + land.name.common + "<br>";
+                    htmlSetland += "inwoners = " + land.population + "<br>";
+                }
+            });
+
+            document.getElementById("flex").innerHTML = htmlSetland;
+
+//             if(selectBox.value == l1)
+//             {
+//                 alert("hoi");
+//             }
+//             else if(selectBox.value == l2)
+//             {
+// ;
+//             }
+//             else if(selectBox.value == l3)
+//             {
+//                 console.log("hoi");
+//             }
+
+            //nu moet je alle landen doorlopen net zolang totdat
+            //je setLand (=land.cca3) gevonden hebt => setLand = land
+            //geef hoofdstad van dat land, aantal inwoners
+        }
+    </script>
+</body>
+</html>
