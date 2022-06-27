@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv=".." content="">
+<title>Document</title>
+<script 
+    src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous">
+</script>
+<script>
+    
+    function test()
+    {
+        console.log("hoi2");
+        let html = "hoi3";
+        document.getElementById()
+    }
+
+    function fLaadBier_plainJS()
+    {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() 
+        {
+            if (this.readyState == 4 && this.status == 200) 
+            {
+                bierJSON = this.responseText;
+                bierJSONparsed = JSON.parse(bierJSON);
+                console.log("Bier, geladen met AJAX in plain Javascript:",bierJSONparsed);
+                alert("Bier is met Plain Javascript in de DOM geladen (zie console)");
+            }
+        };
+        xhttp.open("GET", "https://15euros.nl/api/bier_basic.php", true);
+        xhttp.send();
+    }
+
+    function fLaadBier_jQuery() 
+    {
+        $.getJSON("https://15euros.nl/api/bier_basic.php", function(bierJSON)
+        {
+  	        console.log("Bier, geladen met AJAX met jQuery ", bierJSON);
+ 		    alert("Bier is met jQuey in de DOM geladen (zie console)");
+        });
+    }
+
+    function laatBiertjeZien(Biertjes)
+    {
+        console.log("hoi2");
+        let html = "Biertjes<br>";
+        for(let l=0; i<biertjes.length; i++);
+    }
+
+</script>
+</head>
+<body>
+    <button onclick="test()">Testing</button>
+    <button onclick="fLaadBier_jQuery()">laad hier</button>
+</body>
+</html> -->
+
+<html><head>
+    <style>
+        #div_bier {
+            border:1px solid gray;
+            padding:5px;
+            border-radius:5px;
+            margin-top:10px;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        function fLaad_bier() {
+            $.getJSON("https://15euros.nl/api/bier_basic.php", function(biertjes){
+                console.log("biertjes ", biertjes);
+
+                let tekst = "<h2>Biertjes</h2>";
+
+                tekst += tekst + biertjes[2].naam + " "+ biertjes[2].brouwer;
+
+                //tekst += "<table>";
+                // for(let i=0; i<biertjes.length; i++) {
+                //     tekst += "<tr>";
+                //         tekst += "<td>" + biertjes[i].naam + "</td>";
+                //         tekst += "<td>" + biertjes[i].brouwer + "</td>";
+                //     tekst += "</tr>";
+                // }
+                // tekst += "</table>";
+
+                $("#div_bier").html(tekst);
+            });
+        }
+    </script>
+
+</head>
+<body>
+
+    <h2>750 Belgische biertjes</h2>
+    <button onclick="fLaad_bier()">Haal biertjes</button>
+
+    <div id="div_bier">Hier komen de biertjes</div>
+
+
+</body></html>
